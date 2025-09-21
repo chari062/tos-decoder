@@ -360,21 +360,14 @@
             // Show loading spinner
             document.getElementById('loading').style.display = 'block';
             
-            // Replace with your actual Streamlit app URL
-            // This should be your deployed Streamlit app URL
-            const streamlitUrl = "https://tos-decoder-kegaulsckj6sdenvykv6kl.streamlit.app";
+            // Your actual Streamlit app URL
+            const streamlitUrl = 'https://tos-decoder-kegaulsckj6sdenvykv6kl.streamlit.app';
             
-            // For now, we'll redirect to a placeholder
-            // You'll need to replace this with your actual Streamlit app URL
+            // Redirect to your Streamlit app
             setTimeout(() => {
-                // If you have a deployed Streamlit app, uncomment the line below:
-                // window.open(streamlitUrl, '_blank');
-                
-                // For now, show an alert with instructions
-                alert('ToS Decoder is ready!\n\nTo use the app:\n1. Deploy your Streamlit app to Streamlit Cloud or another hosting service\n2. Update the streamlitUrl variable in this HTML file\n3. The "Launch ToS Decoder" button will then redirect to your app\n\nFor now, you can run the app locally by following the setup instructions in the GitHub repository.');
-                
+                window.open(streamlitUrl, '_blank');
                 document.getElementById('loading').style.display = 'none';
-            }, 2000);
+            }, 1500);
         }
         
         // Add some interactive effects
@@ -405,5 +398,3 @@
     </script>
 </body>
 </html>
-
-
