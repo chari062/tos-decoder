@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToS Decoder - AI-Powered Terms of Service Analyzer</title>
+    <meta name="description" content="Decode complex Terms of Service documents into plain English using AI. Upload PDFs, images, or paste text to get an easy-to-understand analysis of legal documents.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="ToS Decoder - AI-Powered Terms of Service Analyzer">
+    <meta property="og:description" content="Decode complex Terms of Service documents into plain English using AI. Upload PDFs, images, or paste text to get an easy-to-understand analysis of legal documents.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/tos-decoder">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ToS Decoder - AI-Powered Terms of Service Analyzer">
+    <meta name="twitter:description" content="Decode complex Terms of Service documents into plain English using AI.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .cta-section {
+            margin-bottom: 3rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            margin: 0.5rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+            box-shadow: none;
+        }
+        
+        .secondary-button:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .demo-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-steps {
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .demo-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .tech-item {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 0.5rem auto;
+                max-width: 300px;
+            }
+        }
+        
+        .loading {
+            display: none;
+            margin-top: 1rem;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">📋</div>
+        <h1>ToS Decoder</h1>
+        <p class="subtitle">AI-Powered Terms of Service Analyzer</p>
+        <p class="description">
+            Decode complex Terms of Service documents into plain English using AI. 
+            Upload PDFs, images, or paste text to get an easy-to-understand analysis 
+            of legal documents with risk assessment and Q&A features.
+        </p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📁</div>
+                <h3>Multiple Input Methods</h3>
+                <p>Upload PDF files, images, or paste text directly for analysis</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📝</div>
+                <h3>Plain English Summaries</h3>
+                <p>Convert legal jargon into 5 clear, actionable bullet points</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚠️</div>
+                <h3>Risk Assessment</h3>
+                <p>Identify at least 3 potential risks with color-coded severity levels</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤔</div>
+                <h3>Q&A Feature</h3>
+                <p>Ask specific questions about the Terms of Service document</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Progress Tracking</h3>
+                <p>Real-time analysis progress with detailed metrics</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📥</div>
+                <h3>Export Results</h3>
+                <p>Download complete analysis results as JSON for your records</p>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h3 class="demo-title">How It Works</h3>
+            <div class="demo-steps">
+                <div class="demo-step">
+                    <div class="step-number">1</div>
+                    <span>Upload a PDF/image or paste Terms of Service text</span>
+                </div>
+                <div class="demo-step">
+                    <div class="step-number">2</div>
+                    <span>Click "Analyze Terms of Service" to start AI analysis</span>
+                </div>
+                <div class="demo-step">
+                    <div class="step-number">3</div>
+                    <span>Review 5 key points and 3+ risk assessments</span>
+                </div>
+                <div class="demo-step">
+                    <div class="step-number">4</div>
+                    <span>Ask questions and download results as JSON</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <a href="#" class="cta-button" onclick="launchApp()">
+                🚀 Launch ToS Decoder
+            </a>
+            <a href="https://github.com/yourusername/tos-decoder" class="cta-button secondary-button" target="_blank">
+                📁 View on GitHub
+            </a>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Launching ToS Decoder...</p>
+        </div>
+        
+        <div class="footer">
+            <p>Built with ❤️ using Streamlit, Google Gemini AI, and modern web technologies</p>
+            <div class="tech-stack">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Streamlit</span>
+                <span class="tech-item">Google Gemini AI</span>
+                <span class="tech-item">GitHub Pages</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function launchApp() {
+            // Show loading spinner
+            document.getElementById('loading').style.display = 'block';
+            
+            // Replace with your actual Streamlit app URL
+            // This should be your deployed Streamlit app URL
+            const streamlitUrl = 'https://your-streamlit-app-url.streamlit.app';
+            
+            // For now, we'll redirect to a placeholder
+            // You'll need to replace this with your actual Streamlit app URL
+            setTimeout(() => {
+                // If you have a deployed Streamlit app, uncomment the line below:
+                // window.open(streamlitUrl, '_blank');
+                
+                // For now, show an alert with instructions
+                alert('ToS Decoder is ready!\n\nTo use the app:\n1. Deploy your Streamlit app to Streamlit Cloud or another hosting service\n2. Update the streamlitUrl variable in this HTML file\n3. The "Launch ToS Decoder" button will then redirect to your app\n\nFor now, you can run the app locally by following the setup instructions in the GitHub repository.');
+                
+                document.getElementById('loading').style.display = 'none';
+            }, 2000);
+        }
+        
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const features = document.querySelectorAll('.feature');
+            
+            features.forEach((feature, index) => {
+                feature.style.animationDelay = `${index * 0.1}s`;
+                feature.style.animation = 'fadeInUp 0.6s ease forwards';
+            });
+        });
+        
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

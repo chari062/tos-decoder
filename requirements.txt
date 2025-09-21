@@ -1,0 +1,8 @@
+streamlit
+pdfplumber
+pdf2image
+pillow
+pytesseract
+requests
+google-generativeai
+python-dotenv
